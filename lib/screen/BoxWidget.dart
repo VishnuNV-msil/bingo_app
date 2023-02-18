@@ -23,13 +23,13 @@ class ButtonWidget extends StatelessWidget {
         ),
         child: Center(
           child: CircleAvatar(
-            backgroundColor: Colors.white,
+            backgroundColor: buttonText == 'X' ? Colors.red : Colors.white,
             child: Center(
               child: Text(
                 buttonText,
                 style: TextStyle(
                   color: textColor,
-                  fontSize: 10,
+                  fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),

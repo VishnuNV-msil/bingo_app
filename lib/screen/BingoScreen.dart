@@ -2,6 +2,7 @@
 import 'package:bingo_app/bloc/bloc_event.dart';
 import 'package:bingo_app/bloc/bloc_state.dart';
 import 'package:flutter/material.dart';
+// ignore: depend_on_referenced_packages
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../bloc/bingo_bloc.dart';
@@ -38,9 +39,7 @@ class BingoTable extends StatefulWidget {
 }
 
 class _BingoTableState extends State<BingoTable> {
- // List userselectedlist = [];
-  final List numbers = List.generate(25, (int index) => '');
-  //int number = 0;
+  final List numbersList = List.generate(25, (int index) => '');
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -55,7 +54,7 @@ class _BingoTableState extends State<BingoTable> {
                 child: Text(
               "Bingo",
               style:
-                  TextStyle(fontWeight: FontWeight.bold, color: Colors.purple),
+                  TextStyle(fontWeight: FontWeight.bold, color: Colors.purple, fontSize: 30),
             )),
             BlocBuilder<BingoBloc, BingoState>(
               builder: (context, state) {
@@ -63,7 +62,7 @@ class _BingoTableState extends State<BingoTable> {
                   child: Padding(
                     padding: const EdgeInsets.all(30),
                     child: GridView.builder(
-                        itemCount: numbers.length,
+                        itemCount: numbersList.length,
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
                                 crossAxisCount: 5),
@@ -71,11 +70,10 @@ class _BingoTableState extends State<BingoTable> {
                           return ButtonWidget(
                             buttonTapped: () {
                               BlocProvider.of<BingoBloc>(context)
-                                  .add(BingoAddNumberEvent(index, numbers));
+                                  .add(BingoAddNumberEvent(index, numbersList));
                             },
-
                             buttonText: state is BingoAddNumberState ? state.userIndexList[index].toString() :
-                            numbers[index].toString(),
+                            numbersList[index].toString(),
                             textColor: Colors.black,
                           );
                         }),
