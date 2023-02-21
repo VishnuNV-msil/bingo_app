@@ -1,9 +1,9 @@
 class BingoState {}
 
-class BingoInitialState extends BingoState {
+class BingoInitialState extends BingoState {}
 
-}
 class BingoAddNumberState extends BingoState {
   List userIndexList;
-  BingoAddNumberState(this.userIndexList);
+  List bingoList;
+  BingoAddNumberState(this.userIndexList,this.bingoList);
 }

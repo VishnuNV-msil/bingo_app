@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'bloc_event.dart';
 import 'bloc_state.dart';
 // ignore: depend_on_referenced_packages
@@ -28,7 +26,7 @@ class BingoBloc extends Bloc<BingoEvent, BingoState> {
   BingoBloc() : super(BingoInitialState()) {
     on<BingoAddNumberEvent>((event, emit) {
       addToUserSelctedList(event.userIndexValue);
-      emit(BingoAddNumberState(numbersList));
+      emit(BingoAddNumberState(numbersList, bingoList));
     });
   }
   void addToUserSelctedList(int index) {
@@ -59,60 +57,58 @@ class BingoBloc extends Bloc<BingoEvent, BingoState> {
     if (Set.of(crossedList).containsAll(r1) && !bingoList.contains('r1')) {
       bingoList.add('r1');
       drawline(r1);
-    } else if (Set.of(crossedList).containsAll(r2) &&
-        !bingoList.contains('r2')) {
+    }
+    if (Set.of(crossedList).containsAll(r2) && !bingoList.contains('r2')) {
       bingoList.add('r2');
       drawline(r2);
-    } else if (Set.of(crossedList).containsAll(r3) &&
-        !bingoList.contains('r3')) {
+    }
+    if (Set.of(crossedList).containsAll(r3) && !bingoList.contains('r3')) {
       bingoList.add('r3');
       drawline(r3);
-    } else if (Set.of(crossedList).containsAll(r4) &&
-        !bingoList.contains('r4')) {
+    }
+    if (Set.of(crossedList).containsAll(r4) && !bingoList.contains('r4')) {
       bingoList.add('r4');
       drawline(r4);
-    } else if (Set.of(crossedList).containsAll(r5) &&
-        !bingoList.contains('r5')) {
+    }
+    if (Set.of(crossedList).containsAll(r5) && !bingoList.contains('r5')) {
       bingoList.add('r5');
       drawline(r5);
-    } else if (Set.of(crossedList).containsAll(c1) &&
-        !bingoList.contains('c1')) {
+    }
+    if (Set.of(crossedList).containsAll(c1) && !bingoList.contains('c1')) {
       bingoList.add('c1');
       drawline(c1);
-    } else if (Set.of(crossedList).containsAll(c2) &&
-        !bingoList.contains('c2')) {
+    }
+    if (Set.of(crossedList).containsAll(c2) && !bingoList.contains('c2')) {
       bingoList.add('c2');
       drawline(c2);
-    } else if (Set.of(crossedList).containsAll(c3) &&
-        !bingoList.contains('c3')) {
+    }
+    if (Set.of(crossedList).containsAll(c3) && !bingoList.contains('c3')) {
       bingoList.add('c3');
       drawline(c3);
-    } else if (Set.of(crossedList).containsAll(c4) &&
-        !bingoList.contains('c4')) {
+    }
+    if (Set.of(crossedList).containsAll(c4) && !bingoList.contains('c4')) {
       bingoList.add('c4');
       drawline(c4);
-    } else if (Set.of(crossedList).containsAll(c5) &&
-        !bingoList.contains('c5')) {
+    }
+    if (Set.of(crossedList).containsAll(c5) && !bingoList.contains('c5')) {
       bingoList.add('c5');
       drawline(c5);
-    } else if (Set.of(crossedList).containsAll(dLeft) &&
+    }
+    if (Set.of(crossedList).containsAll(dLeft) &&
         !bingoList.contains('dLeft')) {
       bingoList.add('dLeft');
       drawline(dLeft);
-    } else if (Set.of(crossedList).containsAll(dRight) &&
+    }
+    if (Set.of(crossedList).containsAll(dRight) &&
         !bingoList.contains('dRight')) {
       bingoList.add('dRight');
       drawline(dRight);
     } else {}
-    log(crossedList.toString());
   }
 
   void drawline(List lineName) {
-    // need to draw the line connecting items in lineName
-    print('draw a line on ${bingoList.last}');
-    print('lines drawn at $bingoList');
     if (bingoList.length > 4) {
-      print("BINGO == BINGO");
+      //print("BINGO == BINGO");
     }
   }
 }
